@@ -1,0 +1,11 @@
+content   vk_player_control_panel                 chrome/content/
+skin      vk_player_control_panel   classic/1.0   chrome/skin/
+locale    vk_player_control_panel   en-US         chrome/locale/en-US/
+overlay	chrome://browser/content/browser.xul	chrome://vk_player_control_panel/content/ff-overlay.xul
+overlay	chrome://browser/content/navigator.xul	chrome://vk_player_control_panel/content/ff-overlay.xul
+
+style	chrome://global/content/customizeToolbar.xul	chrome://vk_player_control_panel/skin/overlay.css
+
+
+
+

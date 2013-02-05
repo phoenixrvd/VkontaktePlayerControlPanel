@@ -1,0 +1,55 @@
+
+#ffvcontacte_control-prev_s
+  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_b_n.png");}
+
+  #ffvcontacte_control-prev_s:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_b_h.png");}
+  
+#ffvcontacte_control-prev
+  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_s_n.png");}
+
+  #ffvcontacte_control-prev:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_s_h.png");}  
+
+
+
+#ffvcontacte_control-next_s
+  {list-style-image: url("chrome://vk_player_control_panel/skin/next_b_n.png");}
+
+  #ffvcontacte_control-next_s:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/next_b_h.png");}
+  
+#ffvcontacte_control-next
+  {list-style-image: url("chrome://vk_player_control_panel/skin/next_s_n.png");}
+
+  #ffvcontacte_control-next:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/next_s_h.png");}  
+
+
+#ffvcontacte_control-add_s
+  {list-style-image: url("chrome://vk_player_control_panel/skin/add_b_n.png");}
+
+  #ffvcontacte_control-add_s:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/add_b_h.png");}
+  
+#ffvcontacte_control-add
+  {list-style-image: url("chrome://vk_player_control_panel/skin/add_s_n.png");}
+
+  #ffvcontacte_control-add:hover
+  {list-style-image: url("chrome://vk_player_control_panel/skin/add_s_h.png");}  
+
+
+  
+#ffvcontacte_control-play_s
+  {list-style-image: url("chrome://vk_player_control_panel/skin/play_b_h.png");}
+
+  
+#ffvcontacte_control-play
+  {list-style-image: url("chrome://vk_player_control_panel/skin/play_s_h.png");}
+
+  
+  
+#ffvcontacte_control-pause_s
+  {list-style-image: url("chrome://vk_player_control_panel/skin/pause_b_h.png");}
+ #ffvcontacte_control-pause
+  {list-style-image: url("chrome://vk_player_control_panel/skin/pause_s_h.png");}  

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://vk_player_control_panel/content/options.css" type="text/css"?>
+<!DOCTYPE dialog SYSTEM "chrome://vk_player_control_panel/locale/keyconfig.dtd">
+
+<dialog buttons="accept,cancel"
+        id="keyconfig-options-dialog"
+        ondialogaccept="return vk_cp_keyconfig_options.saveOptions()"
+        onload="vk_cp_keyconfig_options.initialize()"
+        onunload="vk_cp_keyconfig_options.uninitialize()"
+        title="&keyconfig.settings;"
+        persist="screenX screenY width height"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ <script src="chrome://vk_player_control_panel/content/vk_cp_keyconfig_data.js" type="application/x-javascript"/>
+ <script src="chrome://vk_player_control_panel/content/vk_cp_keyconfig_set.js" type="application/x-javascript"/>
+ <script src="chrome://vk_player_control_panel/content/vk_cp_keyconfig.js" type="application/x-javascript"/>
+ <script src="chrome://vk_player_control_panel/content/button.js" type="application/x-javascript"/>
+
+     <preferences>
+      <preference id="vk_player_control_panel_big_size" name="extensions.vk_player_control_panel.big_size" type="bool"/>
+    </preferences>
+ <stringbundleset>
+   <stringbundle id="keyconfig-string-bundle" src="chrome://vk_player_control_panel/locale/keyconfig.properties"/>
+ </stringbundleset>
+ <vbox flex="1" rows="2">
+   <tree id="keylist" flex="1" seltype="single" onselect="vk_cp_keyconfig_options.select(this)" hidecolumnpicker="true">
+    <treecols>
+     <treecol id="action" label="&keyconfig.action;" primary="true" flex="1"/>
+     <treecol id="shortcut" label="&keyconfig.shortcut;" flex="1"/>
+    </treecols>
+    <treechildren>
+    </treechildren>
+   </tree>
+   <hbox>
+    <checkbox label="Ctrl" id="ctrl"/>
+    <checkbox label="Alt" id="alt"/>
+    <checkbox label="Shift" id="shift"/>
+    <checkbox label="Meta" id="meta"/>
+    <menulist editable="true" id="key">
+     <menupopup>
+      <menuitem label="Space"/>
+      <menuitem label="Backspace"/>
+      <menuitem label="Tab"/>
+      <menuitem label="Enter"/>
+      <menuitem label="Pause"/>
+      <menuitem label="CapsLock"/>
+      <menuitem label="Esc"/>
+      <menuitem label="PageUp"/>
+      <menuitem label="PageDown"/>
+      <menuitem label="End"/>
+      <menuitem label="Home"/>
+      <menuitem label="Left"/>
+      <menuitem label="Up"/>
+      <menuitem label="Right"/>
+      <menuitem label="Down"/>
+      <menuitem label="PrintScreen"/>
+      <menuitem label="Insert"/>
+      <menuitem label="Delete"/>
+      <menuitem label="F1"/>
+      <menuitem label="F2"/>
+      <menuitem label="F3"/>
+      <menuitem label="F4"/>
+      <menuitem label="F5"/>
+      <menuitem label="F6"/>
+      <menuitem label="F7"/>
+      <menuitem label="F8"/>
+      <menuitem label="F9"/>
+      <menuitem label="F10"/>
+      <menuitem label="F11"/>
+      <menuitem label="F12"/>
+      <menuitem label="NumLock"/>
+      <menuitem label="ScrollLock"/>
+     </menupopup>
+    </menulist>
+   </hbox>
+ </vbox>
+ <checkbox id="checkboolpref" preference="vk_player_control_panel_big_size" label="&keyconfig.bigsize;" />
+</dialog>

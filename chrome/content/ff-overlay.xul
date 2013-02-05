@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://vk_player_control_panel/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://vk_player_control_panel/locale/overlay.dtd">
+<overlay id="vk_player_control_panel-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+ <script type="application/x-javascript" src="vk_cp_keyconfig_data.js"/>
+ <script type="application/x-javascript" src="vk_cp_keyconfig.js"/>
+ <script type="application/x-javascript" src="vk_cp_keyconfig2.js"/>  
+ <script type="application/x-javascript" src="button.js"/>
+ <script type="application/x-javascript" src="ff-overlay.js"/>
+  
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="vk_player_control_panel-strings" src="chrome://vk_player_control_panel/locale/overlay.properties"/>
+  </stringbundleset>
+  <toolbarpalette id="BrowserToolbarPalette">
+				   
+	<toolbarbutton id="ffvcontacte_control-prev"
+		label="&vk_player_control_panelToolbarButton.label_prev;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_prev;"
+		oncommand="vk_player_control.prev()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_prev" />
+
+	<toolbarbutton id="ffvcontacte_control-play"
+		label="&vk_player_control_panelToolbarButton.label_play;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_play;"
+		oncommand="vk_player_control.toggle()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_play" />
+
+	<toolbarbutton id="ffvcontacte_control-next"
+		label="&vk_player_control_panelToolbarButton.label_next;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_next;"
+		oncommand="vk_player_control.next()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_next" />
+
+	<toolbarbutton id="ffvcontacte_control-add"
+		label="&vk_player_control_panelToolbarButton.label_add;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_add;"
+		oncommand="vk_player_control.add()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_add" />	
+		
+  </toolbarpalette>
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="vk_player_control_panel-hello" label="&vk_player_control_panel.label;"
+              oncommand="vk_player_control.keyset();"/>
+  </menupopup>
+</overlay>
