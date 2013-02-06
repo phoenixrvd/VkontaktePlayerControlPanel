@@ -4,14 +4,29 @@
 
 var  vk_player_control = {
 	played : false,
+	bigIcon: false,
 	
-	createIdBySize: function(idSuffix, size){
+	createIdBySize: function(idSuffix){
 		var ids = {
-			
+			"play": "ffvcontacte_control-play",
+			"prev": "ffvcontacte_control-prev",
+			"next": "ffvcontacte_control-next",
+			"add": "ffvcontacte_control-add",
+			"pause": "ffvcontacte_control-pause"
 		};
 		
-		var sizeDuffix = ()
-		return ids
+	  	var prefService = Components.classes["@mozilla.org/preferences-service;1"]
+		                                     .getService(Components.interfaces.nsIPrefService)
+		                                     .getBranch("extensions.vk_player_control_panel.");
+								 
+	  	var bigicon = vk_player_control.bigIcon;
+		var sizeSuffix = "";
+		if(vk_player_control.bigIcon){
+			sizeSuffix = "_s";
+		};
+		
+		var id = ids[idSuffix]+sizeSuffix;
+		return id;
 	},
 	
 	init:function(extensions){
@@ -20,134 +35,73 @@ var  vk_player_control = {
 		if (extension.firstRun)
 			vk_player_control.installButton();
 			
-  var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                                     .getService(Components.interfaces.nsIPrefService)
-                                     .getBranch("extensions.vk_player_control_panel.");
-						 
-  var bigicon = prefService.getBoolPref("big_size");
+	  	var prefService = Components.classes["@mozilla.org/preferences-service;1"]
+		                                     .getService(Components.interfaces.nsIPrefService)
+		                                     .getBranch("extensions.vk_player_control_panel.");
+		vk_player_control.bigIcon = prefService.getBoolPref("big_size");
 
 
-	if (bigicon){
-
-		var button = document.getElementById('ffvcontacte_control-play');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play_s");
-		var button = document.getElementById('ffvcontacte_control-prev');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev_s");
-		var button = document.getElementById('ffvcontacte_control-next');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next_s");
-		var button = document.getElementById('ffvcontacte_control-add');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add_s");
-		var button = document.getElementById('ffvcontacte_control-pause');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause_s");	
-	}else{
-
-		var button = document.getElementById('ffvcontacte_control-play_s');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play");
-		var button = document.getElementById('ffvcontacte_control-prev_s');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev");
-		var button = document.getElementById('ffvcontacte_control-next_s');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next");
-		var button = document.getElementById('ffvcontacte_control-add_s');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add");
-		var button = document.getElementById('ffvcontacte_control-pause_s');
-			if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause");	
-	};
+		if (vk_player_control.bigIcon){
+	
+			var button = document.getElementById('ffvcontacte_control-play');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play_s");
+			var button = document.getElementById('ffvcontacte_control-prev');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev_s");
+			var button = document.getElementById('ffvcontacte_control-next');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next_s");
+			var button = document.getElementById('ffvcontacte_control-add');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add_s");
+			var button = document.getElementById('ffvcontacte_control-pause');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause_s");	
+		}else{
+	
+			var button = document.getElementById('ffvcontacte_control-play_s');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play");
+			var button = document.getElementById('ffvcontacte_control-prev_s');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev");
+			var button = document.getElementById('ffvcontacte_control-next_s');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next");
+			var button = document.getElementById('ffvcontacte_control-add_s');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add");
+			var button = document.getElementById('ffvcontacte_control-pause_s');
+				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause");	
+		};
 	
 	},
 	
 	onclick:function(event){
 
 		var cName = event.target.className;
-		var id='';
-		var size = '';
+		var idName = event.target.id;
 
-Firebug.Console.log(prefService.getBoolPref("big_size"));
-Firebug.Console.log(cName)
 		
-		var button = document.getElementById('ffvcontacte_control-play');
-		id = 'ffvcontacte_control-play';
-		size  = 'big';
-		
-		if ( button == null ) {
-			var button = document.getElementById('ffvcontacte_control-play_s');
-			id = 'ffvcontacte_control-play_s';
-			size = 'small';
-		}
+		var playId = vk_player_control.createIdBySize("play");
+		var pauseId = vk_player_control.createIdBySize("pause");
+		var button = document.getElementById(playId);
 
 		if ( button == null ) {
-			var button = document.getElementById('ffvcontacte_control-pause_s');
-			id = 'ffvcontacte_control-pause_s';
-			size = 'small';
-		}
-
-		if ( button == null ) {
-			var button = document.getElementById('ffvcontacte_control-pause');
-			id = 'ffvcontacte_control-pause';
-			size ='big';
-		}
-
-		if (cName.match('playing')) {
-		//
-					if (!vk_player_control.played) {
-						vk_player_control.played = true;
-						if ( size == 'big') {
-							button.setAttribute ("id",'ffvcontacte_control-pause');
-						}else{
-							button.setAttribute ("id",'ffvcontacte_control-pause_s');
-						}
-					} else {
-						vk_player_control.played = false;
-						if ( size == 'big') {
-							button.setAttribute ("id",'ffvcontacte_control-play');
-						}else{
-							button.setAttribute ("id",'ffvcontacte_control-play_s');
-						}
-					}
-		}else if(){
-			
+			button = document.getElementById(pauseId);
 		};
-		if (cName == "prev") {
-		
-			vk_player_control.played = true;
-			if ( size == 'big') {
-				button.setAttribute ("id",'ffvcontacte_control-pause');
-			}else{
-				button.setAttribute ("id",'ffvcontacte_control-pause_s');
-			}
-		};
-		if (cName == "next") {
-		
-			vk_player_control.played = true;
-			if ( size == 'big') {
-				button.setAttribute ("id",'ffvcontacte_control-pause');
-			}else{
-				button.setAttribute ("id",'ffvcontacte_control-pause_s');
+
+		// Playliste or new VK-Buttons clicked
+		if (cName.match(/play_new/) || idName.match(/_pause|_play/)) {
+			if (!vk_player_control.played) {
+				vk_player_control.played = true;
+				button.setAttribute ("id", pauseId);
+			} else if(!cName.match(/playing/)){
+				vk_player_control.played = false;
+				button.setAttribute ("id", playId);
 			}
 		};
 		
-		var cId  = event.target.getAttribute("id");
 		
-		
-		if (cId == "ffvcontacte_control-prev") {
-			vk_player_control.played = true;
-			if ( size == 'big') {
-				button.setAttribute ("id",'ffvcontacte_control-pause');
-			}else{
-				button.setAttribute ("id",'ffvcontacte_control-pause_s');
-			}
-		};		
-		
-		if (cId == "ffvcontacte_control-next") {
-		
-			vk_player_control.played = true;
-			if ( size == 'big') {
-				button.setAttribute ("id",'ffvcontacte_control-pause');
-			}else{
-				button.setAttribute ("id",'ffvcontacte_control-pause_s');
-			}
-		};		
-
-
+		if (
+			(cName.match(/prev|next/) && cName.match(/ctrl/)) // Not a vk_player_control-Buttons
+			 || cName.match(/_prev|_next/) // Neue VK-Buttons
+			) {
+				vk_player_control.played = true;
+				button.setAttribute ("id", pauseId);
+		};
 
 	},
 	
