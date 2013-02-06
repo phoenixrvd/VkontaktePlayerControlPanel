@@ -6,67 +6,54 @@ var  vk_player_control = {
 	played : false,
 	bigIcon: false,
 	
-	createIdBySize: function(idSuffix){
-		var ids = {
+	idsMap: {
 			"play": "ffvcontacte_control-play",
 			"prev": "ffvcontacte_control-prev",
 			"next": "ffvcontacte_control-next",
 			"add": "ffvcontacte_control-add",
 			"pause": "ffvcontacte_control-pause"
-		};
-		
-	  	var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-		                                     .getService(Components.interfaces.nsIPrefService)
-		                                     .getBranch("extensions.vk_player_control_panel.");
-								 
-	  	var bigicon = vk_player_control.bigIcon;
-		var sizeSuffix = "";
-		if(vk_player_control.bigIcon){
-			sizeSuffix = "_s";
-		};
-		
-		var id = ids[idSuffix]+sizeSuffix;
-		return id;
 	},
 	
-	init:function(extensions){
-		var extension = extensions.get("ffvcontactecontrol@killbar.org");
- 
-		if (extension.firstRun)
-			vk_player_control.installButton();
-			
+	createIdBySize: function(idSuffix, bigDize){
 	  	var prefService = Components.classes["@mozilla.org/preferences-service;1"]
 		                                     .getService(Components.interfaces.nsIPrefService)
 		                                     .getBranch("extensions.vk_player_control_panel.");
 		vk_player_control.bigIcon = prefService.getBoolPref("big_size");
-
-
-		if (vk_player_control.bigIcon){
-	
-			var button = document.getElementById('ffvcontacte_control-play');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play_s");
-			var button = document.getElementById('ffvcontacte_control-prev');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev_s");
-			var button = document.getElementById('ffvcontacte_control-next');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next_s");
-			var button = document.getElementById('ffvcontacte_control-add');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add_s");
-			var button = document.getElementById('ffvcontacte_control-pause');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause_s");	
-		}else{
-	
-			var button = document.getElementById('ffvcontacte_control-play_s');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-play");
-			var button = document.getElementById('ffvcontacte_control-prev_s');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-prev");
-			var button = document.getElementById('ffvcontacte_control-next_s');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-next");
-			var button = document.getElementById('ffvcontacte_control-add_s');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-add");
-			var button = document.getElementById('ffvcontacte_control-pause_s');
-				if ( button != null)button.setAttribute ("id", "ffvcontacte_control-pause");	
+								 
+	  	var bigicon = vk_player_control.bigIcon;
+		var sizeSuffix = "";
+		if(vk_player_control.bigIcon || bigDize){
+			sizeSuffix = "_s";
 		};
+		
+		var id = vk_player_control.idsMap[idSuffix]+sizeSuffix;
+		return id;
+	},
 	
+	/**
+	 * Initialisiert die Button-Größe, dir setzen des ID's
+	 * @return Void
+	 */
+	initButtonSize: function(){
+		var ids = vk_player_control.idsMap;
+		for(siffix in ids){
+			var bigId = vk_player_control.createIdBySize(siffix, false);
+			var smallId = vk_player_control.createIdBySize(siffix, true);
+			if (vk_player_control.bigIcon){
+				var button = document.getElementById(bigId);
+					if ( button != null)button.setAttribute ("id", smallId);
+			}else{
+				var button = document.getElementById(smallId);
+					if ( button != null)button.setAttribute ("id", bigId);
+			}
+		}
+	},
+	
+	init:function(extensions){
+		var extension = extensions.get("ffvcontactecontrol@killbar.org");
+		if (extension.firstRun)
+			vk_player_control.installButton();
+		vk_player_control.initButtonSize();
 	},
 	
 	onclick:function(event){
@@ -105,7 +92,7 @@ var  vk_player_control = {
 
 	},
 	
-	dispatch:function(classname){
+	dispatch:function(controlId){
 	
 		var tabbrowser = gBrowser;
 		var current = gBrowser.selectedTab;
@@ -123,43 +110,40 @@ var  vk_player_control = {
 
 			// The URL is already opened. Select this tab.
 				tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[index];
-		
-				var elem = window.content.document.getElementById(classname);
-				
+				var elem = window.content.document.getElementById(controlId);
 				if ( elem ) {
 					elem.click();
 					break;
 				}
 			}
 		}
-			tabbrowser.selectedTab = current;
-	
-
+		tabbrowser.selectedTab = current;
 	},
 
-	prev:function () {
+	prev: function () {
 		vk_player_control.dispatch("ac_prev");
 	},
 	
-	next :function(){
+	next: function(){
 		vk_player_control.dispatch("ac_next");
 	},
 	
-	add :function(){
+	add: function(){
 		vk_player_control.dispatch("ac_add");
 	},
 	
-	stop:function(){
+	stop: function(){
 		vk_player_control.dispatch("ac_play");
 	},
 	
-	play:function(){
+	play: function(){
 		vk_player_control.dispatch("ac_play");
 	},
 	
-	toggle : function() {
+	toggle: function() {
 		vk_player_control.play();
 	},
+	
 	test:function(){
 		var toolbarId = "nav-bar";
 		var toolbar = document.getElementById(toolbarId);
@@ -187,11 +171,11 @@ var  vk_player_control = {
 	
 		//add the button at the end of the navigation toolbar	
 		//toolbar.insertItem("ffvcontacte_control-prev", toolbar.lastChild);
-		toolbar.insertItem("ffvcontacte_control-prev", before);
-		toolbar.insertItem("ffvcontacte_control-play", before);
-		toolbar.insertItem("ffvcontacte_control-next", before);
-		toolbar.insertItem("ffvcontacte_control-add", before);
-	
+		var idsMap = vk_player_control.idsMap;
+		for(suffix in idsMap){
+			toolbar.insertItem(idsMap[suffix], before);
+		}
+
 		toolbar.setAttribute("currentset", toolbar.currentSet);
 		document.persist(toolbar.id, "currentset");
 	
@@ -200,48 +184,12 @@ var  vk_player_control = {
 		toolbar.collapsed = false;
 	},
 
-  /** Invoke option dialog */
-  keyset: function(evt) {
-   window.openDialog("chrome://vk_player_control_panel/content/options.xul", "keyconfig-options-dialog", "centerscreen,chrome,modal,resizable");
-   
-   vk_cp_keyconfig.getPreferences();
-   
-  var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                                     .getService(Components.interfaces.nsIPrefService)
-                                     .getBranch("extensions.vk_player_control_panel.");
-						 
-  var bigicon = prefService.getBoolPref("big_size");
-
-
-
-	if (bigicon){
-
-		var button = document.getElementById('ffvcontacte_control-play');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-play_s");
-		var button = document.getElementById('ffvcontacte_control-prev');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-prev_s");
-		var button = document.getElementById('ffvcontacte_control-next');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-next_s");
-		var button = document.getElementById('ffvcontacte_control-add');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-add_s");
-		var button = document.getElementById('ffvcontacte_control-pause');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-pause_s");			
-	}else{
-
-		var button = document.getElementById('ffvcontacte_control-play_s');
-		    if ( button != null) button.setAttribute ("id", "ffvcontacte_control-play");
-		var button = document.getElementById('ffvcontacte_control-prev_s');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-prev");
-		var button = document.getElementById('ffvcontacte_control-next_s');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-next");
-		var button = document.getElementById('ffvcontacte_control-add_s');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-add");
-		var button = document.getElementById('ffvcontacte_control-pause_s');
-			if ( button != null) button.setAttribute ("id", "ffvcontacte_control-pause");		
-	};
-	
-	
-  }
+	/** Invoke option dialog */
+	keyset: function(evt) {
+		window.openDialog("chrome://vk_player_control_panel/content/options.xul", "keyconfig-options-dialog", "centerscreen,chrome,modal,resizable");
+		vk_cp_keyconfig.getPreferences();
+		vk_player_control.initButtonSize();
+	}
 		
 }
 
