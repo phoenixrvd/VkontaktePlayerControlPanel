@@ -19,13 +19,10 @@ var  vk_player_control = {
 		                                     .getService(Components.interfaces.nsIPrefService)
 		                                     .getBranch("extensions.vk_player_control_panel.");
 		vk_player_control.bigIcon = prefService.getBoolPref("big_size");
-								 
-	  	var bigicon = vk_player_control.bigIcon;
 		var sizeSuffix = "";
 		if(vk_player_control.bigIcon || bigDize){
 			sizeSuffix = "_s";
 		};
-		
 		var id = vk_player_control.idsMap[idSuffix]+sizeSuffix;
 		return id;
 	},
@@ -39,13 +36,15 @@ var  vk_player_control = {
 		for(siffix in ids){
 			var bigId = vk_player_control.createIdBySize(siffix, false);
 			var smallId = vk_player_control.createIdBySize(siffix, true);
+			var button = document.getElementById(bigId);
+			if ( button == null){
+				button = document.getElementById(bigId);
+			};
 			if (vk_player_control.bigIcon){
-				var button = document.getElementById(bigId);
-					if ( button != null)button.setAttribute ("id", smallId);
+				button.setAttribute ("id", smallId);
 			}else{
-				var button = document.getElementById(smallId);
-					if ( button != null)button.setAttribute ("id", bigId);
-			}
+				button.setAttribute ("id", bigId);
+			};
 		}
 	},
 	
@@ -57,11 +56,8 @@ var  vk_player_control = {
 	},
 	
 	onclick:function(event){
-
 		var cName = event.target.className;
 		var idName = event.target.id;
-
-		
 		var playId = vk_player_control.createIdBySize("play");
 		var pauseId = vk_player_control.createIdBySize("pause");
 		var button = document.getElementById(playId);
@@ -81,7 +77,6 @@ var  vk_player_control = {
 			}
 		};
 		
-		
 		if (
 			(cName.match(/prev|next/) && cName.match(/ctrl/)) // Not a vk_player_control-Buttons
 			 || cName.match(/_prev|_next/) // Neue VK-Buttons
@@ -89,23 +84,18 @@ var  vk_player_control = {
 				vk_player_control.played = true;
 				button.setAttribute ("id", pauseId);
 		};
-
 	},
 	
 	dispatch:function(controlId){
-	
 		var tabbrowser = gBrowser;
 		var current = gBrowser.selectedTab;
-
 		// Check each tab of this browser instance
 		var numTabs = tabbrowser.browsers.length;
-
-		for (var index = 0; index < numTabs; index++) {
 		
+		for (var index = 0; index < numTabs; index++) {
 			var currentBrowser = tabbrowser.getBrowserAtIndex(index);
 			var s = currentBrowser.currentURI.spec;
 			var patt=/vk\.com|vkontakte\.ru/g;
-
 			if (patt.test(s)) {
 
 			// The URL is already opened. Select this tab.
@@ -148,26 +138,20 @@ var  vk_player_control = {
 		var toolbarId = "nav-bar";
 		var toolbar = document.getElementById(toolbarId);
 		var child = toolbar.firstChild;
-					while (child) {
-						alert(child.id);
-						child = child.nextSibling;
-					}
-		
+		while (child) {
+			alert(child.id);
+			child = child.nextSibling;
+		}
 	},
 	
 	
 	installButton:function (){
-	
 		var toolbarId = "nav-bar";
-	
 		var toolbar = document.getElementById(toolbarId);
-		
 		var before = toolbar.lastChild;
-        
-            let elem = document.getElementById('search-container');
-            if (elem && elem.parentNode == toolbar)
-                before = elem.previousElementSibling;
-       
+        var elem = document.getElementById('search-container');
+        if (elem && elem.parentNode == toolbar)
+            before = elem.previousElementSibling;
 	
 		//add the button at the end of the navigation toolbar	
 		//toolbar.insertItem("ffvcontacte_control-prev", toolbar.lastChild);
