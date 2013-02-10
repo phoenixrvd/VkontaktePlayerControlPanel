@@ -11,7 +11,10 @@ var  vk_player_control = {
 			"prev": "ffvcontacte_control-prev",
 			"next": "ffvcontacte_control-next",
 			"add": "ffvcontacte_control-add",
-			"pause": "ffvcontacte_control-pause"
+			"pause": "ffvcontacte_control-pause",
+			"repeat": "ffvcontacte_control-repeat",
+			"shuffle": "ffvcontacte_control-shuffle",
+			"return": "ffvcontacte_control-return"
 	},
 	
 	createIdBySize: function(idSuffix, bigDize){
@@ -128,6 +131,19 @@ var  vk_player_control = {
 	
 	play: function(){
 		vk_player_control.dispatch("ac_play");
+	},
+	
+	repeat: function(){
+		vk_player_control.dispatch("ac_repeat");
+	},
+	
+	shuffle: function(){
+		vk_player_control.dispatch("ac_shuffle");
+	},
+	
+	"return": function() {
+		vk_player_control.dispatch("ac_prev");
+		vk_player_control.dispatch("ac_next");
 	},
 	
 	toggle: function() {

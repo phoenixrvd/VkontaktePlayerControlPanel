@@ -11,6 +11,12 @@
 <!ENTITY vk_player_control_panelToolbarButton.tooltip_next "Следующийтрек трек">
 <!ENTITY vk_player_control_panelToolbarButton.label_add "Добавить в плейлист">
 <!ENTITY vk_player_control_panelToolbarButton.tooltip_add "Добавить в плейлист">
+<!ENTITY vk_player_control_panelToolbarButton.label_repeat "Repeat">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_repeat "Repeat">
+<!ENTITY vk_player_control_panelToolbarButton.label_shuffle "Shuffle">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_shuffle "Shuffle">
+<!ENTITY vk_player_control_panelToolbarButton.label_return "Return">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_return "Return">
 <!ENTITY vk_player_control_panelSidebar.label "Your Sidebar">
 <!ENTITY vk_player_control_panelToolbar.name  "example">
 <!ENTITY vk_player_control_panelToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &vk_player_control_panelToolbar.name;">

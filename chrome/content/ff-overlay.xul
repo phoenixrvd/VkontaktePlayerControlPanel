@@ -18,25 +18,43 @@
 		label="&vk_player_control_panelToolbarButton.label_prev;"
 		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_prev;"
 		oncommand="vk_player_control.prev()"
-		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_prev" />
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_prev ffvcontacte_control" />
 
 	<toolbarbutton id="ffvcontacte_control-play"
 		label="&vk_player_control_panelToolbarButton.label_play;"
 		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_play;"
 		oncommand="vk_player_control.toggle()"
-		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_play" />
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_play ffvcontacte_control" />
 
 	<toolbarbutton id="ffvcontacte_control-next"
 		label="&vk_player_control_panelToolbarButton.label_next;"
 		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_next;"
 		oncommand="vk_player_control.next()"
-		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_next" />
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_next ffvcontacte_control" />
 
+	<toolbarbutton id="ffvcontacte_control-repeat"
+		label="&vk_player_control_panelToolbarButton.label_repeat;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_repeat;"
+		oncommand="vk_player_control.repeat()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_repeat ffvcontacte_control" />
+		
+	<toolbarbutton id="ffvcontacte_control-shuffle"
+		label="&vk_player_control_panelToolbarButton.label_shuffle;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_shuffle;"
+		oncommand="vk_player_control.shuffle()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_shuffle ffvcontacte_control" />
+		
+	<toolbarbutton id="ffvcontacte_control-return"
+		label="&vk_player_control_panelToolbarButton.label_return;"
+		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_return;"
+		oncommand="vk_player_control.return()"
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_return ffvcontacte_control" />
+		
 	<toolbarbutton id="ffvcontacte_control-add"
 		label="&vk_player_control_panelToolbarButton.label_add;"
 		tooltiptext="&vk_player_control_panelToolbarButton.tooltip_add;"
 		oncommand="vk_player_control.add()"
-		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_add" />	
+		class="toolbarbutton-1 chromeclass-toolbar-additional ffvcontacte_control_add ffvcontacte_control" />	
 		
   </toolbarpalette>
   <menupopup id="menu_ToolsPopup">
