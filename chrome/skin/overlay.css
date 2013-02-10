@@ -1,55 +1,40 @@
+.ffvcontacte_control{
+	opacity: 0.6
+}
+
+.ffvcontacte_control:hover{
+	opacity: 1.0
+}
 
 #ffvcontacte_control-prev_s
-  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_b_n.png");}
-
-  #ffvcontacte_control-prev_s:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_b_h.png");}
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/prev.png");}
 #ffvcontacte_control-prev
-  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_s_n.png");}
-
-  #ffvcontacte_control-prev:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/prev_s_h.png");}  
-
-
-
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/prev.png");}
+#ffvcontacte_control-shuffle_s
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/shuffle.png");}
+#ffvcontacte_control-shuffle
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/shuffle.png");}
+#ffvcontacte_control-repeat_s
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/repeat.png");}
+#ffvcontacte_control-repeat
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/repeat.png");}
+#ffvcontacte_control-return_s
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/return.png");}
+#ffvcontacte_control-return
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/return.png");}
 #ffvcontacte_control-next_s
-  {list-style-image: url("chrome://vk_player_control_panel/skin/next_b_n.png");}
-
-  #ffvcontacte_control-next_s:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/next_b_h.png");}
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/next.png");}
 #ffvcontacte_control-next
-  {list-style-image: url("chrome://vk_player_control_panel/skin/next_s_n.png");}
-
-  #ffvcontacte_control-next:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/next_s_h.png");}  
-
-
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/next.png");}
 #ffvcontacte_control-add_s
-  {list-style-image: url("chrome://vk_player_control_panel/skin/add_b_n.png");}
-
-  #ffvcontacte_control-add_s:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/add_b_h.png");}
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/add.png");}
 #ffvcontacte_control-add
-  {list-style-image: url("chrome://vk_player_control_panel/skin/add_s_n.png");}
-
-  #ffvcontacte_control-add:hover
-  {list-style-image: url("chrome://vk_player_control_panel/skin/add_s_h.png");}  
-
-
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/add.png");}
 #ffvcontacte_control-play_s
-  {list-style-image: url("chrome://vk_player_control_panel/skin/play_b_h.png");}
-
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/play.png");}
 #ffvcontacte_control-play
-  {list-style-image: url("chrome://vk_player_control_panel/skin/play_s_h.png");}
-
-  
-  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/play.png");}
 #ffvcontacte_control-pause_s
-  {list-style-image: url("chrome://vk_player_control_panel/skin/pause_b_h.png");}
- #ffvcontacte_control-pause
-  {list-style-image: url("chrome://vk_player_control_panel/skin/pause_s_h.png");}  
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/16_16/pause.png");}
+#ffvcontacte_control-pause
+	{list-style-image: url("chrome://vk_player_control_panel/skin/icons/24_24/pause.png");}
