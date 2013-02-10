@@ -9,13 +9,23 @@ prev: function(){
 	vk_player_control.prev();
 },
 playPause: function(){
- vk_player_control.toggle();
+	vk_player_control.toggle();
 },
 next: function(){
-vk_player_control.next();
+	vk_player_control.next();
 },
 add: function(){
-vk_player_control.add();
+	vk_player_control.add();
+},
+repeat: function(){
+	vk_player_control.repeat();
+},
+shuffle: function(){
+	vk_player_control.shuffle();
+},
+"return": function(){
+	var f = vk_player_control["return"];
+	f();
 },
 
  //End of bindable functions

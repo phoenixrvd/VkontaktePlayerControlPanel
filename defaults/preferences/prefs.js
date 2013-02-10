@@ -9,6 +9,10 @@ pref('extensions.vk_player_control_panel.prevKey', 'Alt+a');
 pref('extensions.vk_player_control_panel.playPauseKey', 'Alt+s');
 pref('extensions.vk_player_control_panel.nextKey', 'Alt+d');
 pref('extensions.vk_player_control_panel.addKey', 'Alt+f');
+pref('extensions.vk_player_control_panel.repeat', 'Alt+g');
+pref('extensions.vk_player_control_panel.shuffle', 'Alt+h');
+pref('extensions.vk_player_control_panel.return', 'Alt+j');
+
 pref('extensions.vk_player_control_panel.big_size', false);
 
 // https://developer.mozilla.org/en/Localizing_extension_descriptions
