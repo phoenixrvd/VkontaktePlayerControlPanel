@@ -89,7 +89,27 @@ var  vk_player_control = {
 		};
 	},
 	
-	dispatch:function(controlId){
+	injectJS: function(eventString){
+		var doc = window.content.document;
+	    var controlId = "vkControlPanelForFirefox";
+	    var control = doc.getElementById(controlId);
+	    if(!control){
+	        control = doc.createElement("div");
+	        control.setAttribute("id", controlId);
+	        control.setAttribute("onclick", "javascript:headPlayPause()");
+	        doc.body.appendChild(control);
+	    }else{
+	    	if(eventString == "return"){
+	    		var codeString = "audioPlayer.stop();audioPlayer.controls.pd.play.click();";
+	    	}else{
+		    	var codeString = "audioPlayer.controls.pd."+eventString+".click();";
+	    	}
+	        control.setAttribute("onclick", "javascript:"+codeString);
+	    }
+	    control.click();
+	},
+	
+	dispatch:function(eventString){
 		var tabbrowser = gBrowser;
 		var current = gBrowser.selectedTab;
 		// Check each tab of this browser instance
@@ -100,50 +120,45 @@ var  vk_player_control = {
 			var s = currentBrowser.currentURI.spec;
 			var patt=/vk\.com|vkontakte\.ru/g;
 			if (patt.test(s)) {
-
 			// The URL is already opened. Select this tab.
 				tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[index];
-				var elem = window.content.document.getElementById(controlId);
-				if ( elem ) {
-					elem.click();
-					break;
-				}
+				vk_player_control.injectJS(eventString);
+				break;
 			}
 		}
 		tabbrowser.selectedTab = current;
 	},
 
 	prev: function () {
-		vk_player_control.dispatch("ac_prev");
+		vk_player_control.dispatch("prev");
 	},
 	
 	next: function(){
-		vk_player_control.dispatch("ac_next");
+		vk_player_control.dispatch("next");
 	},
 	
 	add: function(){
-		vk_player_control.dispatch("ac_add");
+		vk_player_control.dispatch("add");
 	},
 	
 	stop: function(){
-		vk_player_control.dispatch("ac_play");
+		vk_player_control.dispatch("stop");
 	},
 	
 	play: function(){
-		vk_player_control.dispatch("ac_play");
+		vk_player_control.dispatch("play");
 	},
 	
 	repeat: function(){
-		vk_player_control.dispatch("ac_repeat");
+		vk_player_control.dispatch("repeat");
 	},
 	
 	shuffle: function(){
-		vk_player_control.dispatch("ac_shuffle");
+		vk_player_control.dispatch("shuffle");
 	},
 	
 	"return": function() {
-		vk_player_control.dispatch("ac_prev");
-		vk_player_control.dispatch("ac_next");
+		vk_player_control.dispatch("return");
 	},
 	
 	toggle: function() {
