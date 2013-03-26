@@ -23,7 +23,7 @@ var  vk_player_control = {
 		                                     .getBranch("extensions.vk_player_control_panel.");
 		vk_player_control.bigIcon = prefService.getBoolPref("big_size");
 		var sizeSuffix = "";
-		if(vk_player_control.bigIcon || bigDize){
+		if(vk_player_control.bigIcon && bigDize!==false){
 			sizeSuffix = "_s";
 		};
 		var id = vk_player_control.idsMap[idSuffix]+sizeSuffix;
@@ -41,11 +41,12 @@ var  vk_player_control = {
 			var smallId = vk_player_control.createIdBySize(siffix, true);
 			var button = document.getElementById(bigId);
 			if ( button == null){
-				button = document.getElementById(bigId);
+				button = document.getElementById(smallId);
 			};
-			if (vk_player_control.bigIcon){
+			Firebug.Console.log([button, siffix, bigId, smallId]);
+			if (vk_player_control.bigIcon && button != null){
 				button.setAttribute ("id", smallId);
-			}else{
+			}else if(button != null){
 				button.setAttribute ("id", bigId);
 			};
 		}
