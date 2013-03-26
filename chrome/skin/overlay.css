@@ -1,9 +1,9 @@
 .ffvcontacte_control{
-	opacity: 0.6
+	opacity: 1.0
 }
 
 .ffvcontacte_control:hover{
-	opacity: 1.0
+	opacity: 0.7
 }
 
 toolbar[iconsize="small"] #ffvcontacte_control-prev
