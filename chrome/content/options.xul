@@ -16,7 +16,7 @@
  <script src="chrome://vk_player_control_panel/content/button.js" type="application/x-javascript"/>
 
      <preferences>
-      <preference id="vk_player_control_panel_big_size" name="extensions.vk_player_control_panel.big_size" type="bool"/>
+     	
     </preferences>
  <stringbundleset>
    <stringbundle id="keyconfig-string-bundle" src="chrome://vk_player_control_panel/locale/keyconfig.properties"/>
@@ -73,5 +73,4 @@
     </menulist>
    </hbox>
  </vbox>
- <checkbox id="checkboolpref" preference="vk_player_control_panel_big_size" label="&keyconfig.bigsize;" />
 </dialog>

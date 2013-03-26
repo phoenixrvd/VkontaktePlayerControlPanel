@@ -122,12 +122,7 @@ var vk_cp_keyconfig_options = {
     alert("Exception when saving options:"+e);
    }
   }
-    var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-                                     .getService(Components.interfaces.nsIPrefService)
-                                     .getBranch("extensions.vk_player_control_panel.");
 			 
-   prefService.setBoolPref("big_size",document.getElementById('checkboolpref').checked);
-
   return true;
  },
  

@@ -4,7 +4,6 @@
 
 var  vk_player_control = {
 	played : false,
-	bigIcon: false,
 	
 	idsMap: {
 			"play": "ffvcontacte_control-play",
@@ -17,53 +16,17 @@ var  vk_player_control = {
 			"return": "ffvcontacte_control-return"
 	},
 	
-	createIdBySize: function(idSuffix, bigDize){
-	  	var prefService = Components.classes["@mozilla.org/preferences-service;1"]
-		                                     .getService(Components.interfaces.nsIPrefService)
-		                                     .getBranch("extensions.vk_player_control_panel.");
-		vk_player_control.bigIcon = prefService.getBoolPref("big_size");
-		var sizeSuffix = "";
-		if(vk_player_control.bigIcon && bigDize!==false){
-			sizeSuffix = "_s";
-		};
-		var id = vk_player_control.idsMap[idSuffix]+sizeSuffix;
-		return id;
-	},
-	
-	/**
-	 * Initialisiert die Button-Größe, dir setzen des ID's
-	 * @return Void
-	 */
-	initButtonSize: function(){
-		var ids = vk_player_control.idsMap;
-		for(siffix in ids){
-			var bigId = vk_player_control.createIdBySize(siffix, false);
-			var smallId = vk_player_control.createIdBySize(siffix, true);
-			var button = document.getElementById(bigId);
-			if ( button == null){
-				button = document.getElementById(smallId);
-			};
-			Firebug.Console.log([button, siffix, bigId, smallId]);
-			if (vk_player_control.bigIcon && button != null){
-				button.setAttribute ("id", smallId);
-			}else if(button != null){
-				button.setAttribute ("id", bigId);
-			};
-		}
-	},
-	
 	init:function(extensions){
 		var extension = extensions.get("ffvcontactecontrol@killbar.org");
 		if (extension.firstRun)
 			vk_player_control.installButton();
-		vk_player_control.initButtonSize();
 	},
 	
 	onclick:function(event){
 		var cName = event.target.className;
 		var idName = event.target.id;
-		var playId = vk_player_control.createIdBySize("play");
-		var pauseId = vk_player_control.createIdBySize("pause");
+		var playId = vk_player_control.idsMap["play"];
+		var pauseId = vk_player_control.idsMap["pause"];
 		var button = document.getElementById(playId);
 
 		if ( button == null ) {
@@ -204,7 +167,6 @@ var  vk_player_control = {
 	keyset: function(evt) {
 		window.openDialog("chrome://vk_player_control_panel/content/options.xul", "keyconfig-options-dialog", "centerscreen,chrome,modal,resizable");
 		vk_cp_keyconfig.getPreferences();
-		vk_player_control.initButtonSize();
 	}
 		
 }
