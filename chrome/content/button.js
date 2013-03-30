@@ -22,7 +22,6 @@ var  vk_player_control = {
 	},
 	
 	onclick:function(event){
-		Firebug.Console.log(event);
 		var patt=/vk\.com|vkontakte\.ru/g;
 		var doc = event.view.document;
 		if (doc.location.href.match(patt)){
