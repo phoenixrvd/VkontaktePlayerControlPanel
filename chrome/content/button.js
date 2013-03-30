@@ -22,8 +22,9 @@ var  vk_player_control = {
 	},
 	
 	onclick:function(event){
+		Firebug.Console.log(event);
 		var patt=/vk\.com|vkontakte\.ru/g;
-		var doc = window.content.document;
+		var doc = event.view.document;
 		if (doc.location.href.match(patt)){
 			vk_player_control.setActiveTab();
 		};
