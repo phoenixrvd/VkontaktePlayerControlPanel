@@ -3,7 +3,6 @@
 
 
 var  vk_player_control = {
-	played : false,
 	
 	idsMap: {
 			"play": "ffvcontacte_control-play",
@@ -23,110 +22,148 @@ var  vk_player_control = {
 	},
 	
 	onclick:function(event){
-		var cName = event.target.className;
-		var idName = event.target.id;
-		var playId = vk_player_control.idsMap["play"];
-		var pauseId = vk_player_control.idsMap["pause"];
-		var button = document.getElementById(playId);
-
-		if ( button == null ) {
-			button = document.getElementById(pauseId);
-		};
-
-		// Playliste or new VK-Buttons clicked
-		if (cName.match(/play_new/) || idName.match(/_pause|_play/)) {
-			if (!vk_player_control.played) {
-				vk_player_control.played = true;
-				button.setAttribute ("id", pauseId);
-			} else if(!cName.match(/playing/)){
-				vk_player_control.played = false;
-				button.setAttribute ("id", playId);
-			}
-		};
-		
-		if (
-			(cName.match(/prev|next/) && cName.match(/ctrl/)) // Not a vk_player_control-Buttons
-			 || cName.match(/_prev|_next/) // Neue VK-Buttons
-			) {
-				vk_player_control.played = true;
-				button.setAttribute ("id", pauseId);
+		var patt=/vk\.com|vkontakte\.ru/g;
+		var doc = window.content.document;
+		if (doc.location.href.match(patt)){
+			vk_player_control.setActiveTab();
 		};
 	},
 	
-	injectJS: function(eventString){
-		var doc = window.content.document;
+	injectJS: function(eventString, doc){
 	    var controlId = "vkControlPanelForFirefox";
 	    var control = doc.getElementById(controlId);
 	    if(!control){
 	        control = doc.createElement("div");
 	        control.setAttribute("id", controlId);
-	        control.setAttribute("onclick", "javascript:headPlayPause()");
+	        doc.getElementById('head_play_btn').click();
 	        doc.body.appendChild(control);
+	    }else if(eventString == "toggle"){
+	    	doc.getElementById('head_play_btn').click();
 	    }else{
-	    	if(eventString == "return"){
-	    		var codeString = "audioPlayer.stop();audioPlayer.controls.pd.play.click();";
-	    	}else{
-		    	var codeString = "audioPlayer.controls.pd."+eventString+".click();";
-	    	}
-	        control.setAttribute("onclick", "javascript:"+codeString);
+	    	var codeString = eventString;
+	        control.setAttribute("onclick", "javascript:if(audioPlayer){"+codeString+"}");
+		    control.click();
 	    }
-	    control.click();
 	},
 	
-	dispatch:function(eventString){
+	checkPlayButton: function(doc){
+		var rtr = false;
+		var controlId = "head_play_btn";
+		var control = doc.getElementById(controlId);
+		if(control && control.getAttribute('class') && control.getAttribute('class').match(/playing/)){
+			rtr = true;
+		}
+		return rtr;
+	},
+	
+	activeTab: null, //Aktuelle Tab, in welchem vkPlayer läuft,
+	setActiveTab: function(){
+		var patt=/vk\.com|vkontakte\.ru/g;
 		var tabbrowser = gBrowser;
 		var current = gBrowser.selectedTab;
-		// Check each tab of this browser instance
-		var numTabs = tabbrowser.browsers.length;
-		
-		for (var index = 0; index < numTabs; index++) {
-			var currentBrowser = tabbrowser.getBrowserAtIndex(index);
-			var s = currentBrowser.currentURI.spec;
-			var patt=/vk\.com|vkontakte\.ru/g;
-			if (patt.test(s)) {
-			// The URL is already opened. Select this tab.
-				tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[index];
-				vk_player_control.injectJS(eventString);
-				break;
+		var pauseGefunden = false;
+		var doc = window.content.document;
+		if(doc.location.href.match(patt) && !vk_player_control.vk_player_control){
+			if(vk_player_control.checkPlayButton(doc)){
+				vk_player_control.activeTab = current;
 			}
+		}else if(!vk_player_control.activeTab){
+			var numTabs = tabbrowser.browsers.length;
+			var firstTab = null;
+			for (var index = 0; index < numTabs; index++) {
+				var currentBrowser = tabbrowser.getBrowserAtIndex(index);
+				var s = currentBrowser.currentURI.spec;
+				if(s.match(patt)){
+					tabbrowser.selectedTab = tabbrowser.tabContainer.childNodes[index];
+					doc = window.content.document;
+					if(!firstTab){
+						firstTab = tabbrowser.selectedTab;
+					}
+					if(vk_player_control.checkPlayButton(doc)){
+						vk_player_control.activeTab = tabbrowser.selectedTab;
+						break;
+					}
+				};
+			};
+			if(!vk_player_control.activeTab && firstTab){
+				vk_player_control.activeTab = firstTab;
+			}
+		};
+		
+		var timeout = setTimeout(initPlayButton, 300);
+		function initPlayButton(){
+			tabbrowser.selectedTab = vk_player_control.activeTab;
+			doc = window.content.document;
+			var playId = vk_player_control.idsMap["play"];
+			var pauseId = vk_player_control.idsMap["pause"];
+			var button = document.getElementById(playId);
+			if ( button == null ) {
+				button = document.getElementById(pauseId);
+			};
+			var playHead = doc.getElementById("head_play_btn");
+			if(vk_player_control.checkPlayButton(doc) && button){
+				button.setAttribute ("id", pauseId);
+			}else if(button){
+				button.setAttribute ("id", playId);
+			}
+			tabbrowser.selectedTab = current;
 		}
 		tabbrowser.selectedTab = current;
 	},
-
+	
+	dispatch: function(eventString){
+		if(!vk_player_control.activeTab){
+			vk_player_control.setActiveTab();
+		}
+		var tabbrowser = gBrowser;
+		var current = gBrowser.selectedTab;
+		tabbrowser.selectedTab = vk_player_control.activeTab;
+		var doc = window.content.document;
+		vk_player_control.injectJS(eventString, doc);
+		tabbrowser.selectedTab = current;
+		vk_player_control.setActiveTab();
+	},
+	
+	/**
+	vkPlayerEventMap: {
+		"audioPlayer.pauseTrack()": "foo"
+	},
+	*/
+	
 	prev: function () {
-		vk_player_control.dispatch("prev");
+		vk_player_control.dispatch("audioPlayer.prevTrack()");
 	},
 	
 	next: function(){
-		vk_player_control.dispatch("next");
+		vk_player_control.dispatch("audioPlayer.nextTrack()");
 	},
 	
 	add: function(){
-		vk_player_control.dispatch("add");
+		vk_player_control.dispatch("audioPlayer.addCurrentTrack()");
 	},
 	
 	stop: function(){
-		vk_player_control.dispatch("stop");
+		vk_player_control.dispatch("audioPlayer.stop()");
 	},
 	
 	play: function(){
-		vk_player_control.dispatch("play");
+		vk_player_control.dispatch("audioPlayer.playTrack()");
 	},
 	
 	repeat: function(){
-		vk_player_control.dispatch("repeat");
+		vk_player_control.dispatch("audioPlayer.toggleRepeat()");
 	},
 	
 	shuffle: function(){
-		vk_player_control.dispatch("shuffle");
+		vk_player_control.dispatch("audioPlayer.shuffleAudios()");
 	},
 	
 	"return": function() {
-		vk_player_control.dispatch("return");
+		vk_player_control.dispatch("audioPlayer.prevTrack();audioPlayer.nextTrack()");
 	},
 	
 	toggle: function() {
-		vk_player_control.play();
+		vk_player_control.dispatch("toggle");
 	},
 	
 	test:function(){
