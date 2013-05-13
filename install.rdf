@@ -4,7 +4,7 @@
     <Description about="urn:mozilla:install-manifest">
         <em:type>2</em:type> <!-- 2 : Extension -->
         <em:id>ffvcontactecontrol@killbar.org</em:id>
-        <em:version>1.1.5</em:version>
+        <em:version>1.1.6</em:version>
         <em:name>Vkontakte Player Control Panel</em:name>
         <em:description>Плагин для управления плеером с сайта VKontakte.ru</em:description>
         <em:creator>AvatarBlueray</em:creator>
