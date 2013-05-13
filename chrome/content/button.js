@@ -32,15 +32,17 @@ var  vk_player_control = {
 	injectJS: function(eventString, doc){
 	    var controlId = "vkControlPanelForFirefox";
 	    var control = doc.getElementById(controlId);
+    	var codeString = eventString;
 	    if(!control){
 	        control = doc.createElement("div");
 	        control.setAttribute("id", controlId);
-	        doc.getElementById('head_play_btn').click();
+	        //doc.getElementById('head_play_btn').click();
 	        doc.body.appendChild(control);
+	        control.setAttribute("onclick", "javascript:if(audioPlayer){"+codeString+"}else{document.getElementById('head_play_btn').click()}");
+		    control.click();
 	    }else if(eventString == "toggle"){
 	    	doc.getElementById('head_play_btn').click();
 	    }else{
-	    	var codeString = eventString;
 	        control.setAttribute("onclick", "javascript:if(audioPlayer){"+codeString+"}");
 		    control.click();
 	    }
