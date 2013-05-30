@@ -2,27 +2,49 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:type>2</em:type> <!-- 2 : Extension -->
         <em:id>ffvcontactecontrol@killbar.org</em:id>
-        <em:version>1.1.6</em:version>
+        <em:version>1.2.0</em:version>
+        <em:type>2</em:type> <!-- 2 : Extension -->
         <em:name>Vkontakte Player Control Panel</em:name>
-        <em:description>Плагин для управления плеером с сайта VKontakte.ru</em:description>
+        <em:description>Plugin to control the player on the site VK.com</em:description>
+        
+        <em:localized>
+            <Description>
+                <em:locale>ru-RU</em:locale>
+                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:description>Плагин для управления плеером на сайте VK.com</em:description>
+                <em:translator>Валентин Малахов</em:translator>
+                <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
+            </Description>
+        </em:localized>
+        
+        <em:localized>
+            <Description>
+                <em:locale>uk-UK</em:locale>
+                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:description>Плагін для управління плеєром на сайті VK.com</em:description>
+                <em:translator>Валентин Малахов</em:translator>
+                <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
+            </Description>
+        </em:localized>
+        
         <em:creator>AvatarBlueray</em:creator>
-        <em:contributor>Valera Chevtaev
-</em:contributor>
-        <em:contributor>Tanya Roschina
-</em:contributor>
+        <em:translator>Valentin Malahov</em:translator>
+        <em:contributor>Valera Chevtaev</em:contributor>
+        <em:contributor>Tanya Roschina</em:contributor>
         <em:contributor>Martin &#39;Bilbo&#39; Petricek</em:contributor>
+        <em:contributor>Viacheslav Wolf</em:contributor>
+        <em:contributor>Valentin Malahov</em:contributor>
         <em:targetApplication>
             <Description>
                 <!-- Firefox -->
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>1.5</em:minVersion>
-                <em:maxVersion>20.0a1</em:maxVersion>
+                <em:maxVersion>21.0</em:maxVersion>
             </Description>
         </em:targetApplication>
-		<em:homepageURL>http://killbar.org/index.php</em:homepageURL>
+        <em:homepageURL>http://killbar.org/index.php</em:homepageURL>
         <em:optionsURL>chrome://vk_player_control_panel/content/options.xul</em:optionsURL>
-		<em:iconURL>chrome://vk_player_control_panel/skin/button.png</em:iconURL>
+        <em:iconURL>chrome://vk_player_control_panel/skin/button.png</em:iconURL>
     </Description>
 </RDF>

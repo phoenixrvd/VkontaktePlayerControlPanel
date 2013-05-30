@@ -1,6 +1,8 @@
 content   vk_player_control_panel                 chrome/content/
 skin      vk_player_control_panel   classic/1.0   chrome/skin/
 locale    vk_player_control_panel   en-US         chrome/locale/en-US/
+locale    vk_player_control_panel   ru-RU         chrome/locale/ru-RU/
+locale    vk_player_control_panel   uk-UK         chrome/locale/uk-UK/
 overlay	chrome://browser/content/browser.xul	chrome://vk_player_control_panel/content/ff-overlay.xul
 overlay	chrome://browser/content/navigator.xul	chrome://vk_player_control_panel/content/ff-overlay.xul
 
