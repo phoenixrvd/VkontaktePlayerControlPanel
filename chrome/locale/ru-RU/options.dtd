@@ -1,5 +1,5 @@
-<!ENTITY prefwindow.title "VK Player Control Panel preferences">
-<!ENTITY pane1.title "VK Player Control Panel preferences">
+<!ENTITY prefwindow.title "VK Player Control Panel предпочтения">
+<!ENTITY pane1.title "VK Player Control Panel предпочтения">
 <!ENTITY checkboolpref.label "A Boolean Preference">
 <!ENTITY checkboolpref.accesskey "B">
 <!ENTITY intpref.label "An Integer Preference">

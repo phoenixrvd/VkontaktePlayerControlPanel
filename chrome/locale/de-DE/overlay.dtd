@@ -1,0 +1,22 @@
+<!ENTITY vk_player_control_panel.label "VK Player Control Panel опции">
+<!ENTITY vk_player_control_panelContext.label "Your Menuitem">
+<!ENTITY vk_player_control_panelContext.accesskey "Y">
+<!ENTITY vk_player_control_panelToolbarButton.label "Your Toolbar Button">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY vk_player_control_panelToolbarButton.label_prev "Vorheriges Stück">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_prev "Vorheriges Stück">
+<!ENTITY vk_player_control_panelToolbarButton.label_play "Wiedergabe / Pause">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_play "Wiedergabe / Pause">
+<!ENTITY vk_player_control_panelToolbarButton.label_next "Nachfolgendes Stück">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_next "Nachfolgendes Stück">
+<!ENTITY vk_player_control_panelToolbarButton.label_add "Zu meine Musik hinzufügen">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_add "Zu meine Musik hinzufügen">
+<!ENTITY vk_player_control_panelToolbarButton.label_repeat "Einzelstück wiederholen">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_repeat "Einzelstück wiederholen">
+<!ENTITY vk_player_control_panelToolbarButton.label_shuffle "Zufällig">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_shuffle "Zufällig">
+<!ENTITY vk_player_control_panelToolbarButton.label_return "Zum Anfang des Liedes">
+<!ENTITY vk_player_control_panelToolbarButton.tooltip_return "Zum Anfang des Liedes">
+<!ENTITY vk_player_control_panelSidebar.label "Your Sidebar">
+<!ENTITY vk_player_control_panelToolbar.name  "example">
+<!ENTITY vk_player_control_panelToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &vk_player_control_panelToolbar.name;">

@@ -1,4 +1,4 @@
-<!ENTITY keyconfig.settings "Key settings">
+<!ENTITY keyconfig.settings "Hotkeys">
 <!ENTITY keyconfig.action "Action">
 <!ENTITY keyconfig.shortcut "Keyboard shortcut">
-<!ENTITY keyconfig.bigsize "Icon Big Size">
+<!ENTITY keyconfig.bigsize "Big icons">
