@@ -3,7 +3,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
         <em:id>ffvcontactecontrol@killbar.org</em:id>
-        <em:version>1.2.0</em:version>
+        <em:version>1.2.1</em:version>
         <em:type>2</em:type> <!-- 2 : Extension -->
         <em:name>Vkontakte Player Control Panel</em:name>
         <em:description>Plugin to control the player on the site VK.com</em:description>
@@ -24,6 +24,16 @@
                 <em:name>Vkontakte Player Control Panel</em:name>
                 <em:description>Плагін для управління плеєром на сайті VK.com</em:description>
                 <em:translator>Валентин Малахов</em:translator>
+                <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
+            </Description>
+        </em:localized>
+        
+        <em:localized>
+            <Description>
+                <em:locale>de-DE</em:locale>
+                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:description>Plug-in zum ansteuern des Players auf der VK.com-Seite</em:description>
+                <em:translator>Viacheslav Wolf</em:translator>
                 <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
             </Description>
         </em:localized>
