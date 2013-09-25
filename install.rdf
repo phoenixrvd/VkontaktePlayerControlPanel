@@ -2,16 +2,16 @@
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-        <em:id>ffvcontactecontrol@killbar.org</em:id>
-        <em:version>1.2.1</em:version>
+        <em:id>ffvcontactecontrol_restored@killbar.org</em:id>
+        <em:version>1.2.3</em:version>
         <em:type>2</em:type> <!-- 2 : Extension -->
-        <em:name>Vkontakte Player Control Panel</em:name>
+        <em:name>Vkontakte Player Control Panel (Restored)</em:name>
         <em:description>Plugin to control the player on the site VK.com</em:description>
         
         <em:localized>
             <Description>
                 <em:locale>ru-RU</em:locale>
-                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:name>Vkontakte Player Control Panel (Restored)</em:name>
                 <em:description>Плагин для управления плеером на сайте VK.com</em:description>
                 <em:translator>Валентин Малахов</em:translator>
                 <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
@@ -21,7 +21,7 @@
         <em:localized>
             <Description>
                 <em:locale>uk-UK</em:locale>
-                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:name>Vkontakte Player Control Panel (Restored)</em:name>
                 <em:description>Плагін для управління плеєром на сайті VK.com</em:description>
                 <em:translator>Валентин Малахов</em:translator>
                 <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>
@@ -31,7 +31,7 @@
         <em:localized>
             <Description>
                 <em:locale>de-DE</em:locale>
-                <em:name>Vkontakte Player Control Panel</em:name>
+                <em:name>Vkontakte Player Control Panel (Restored)</em:name>
                 <em:description>Plug-in zum ansteuern des Players auf der VK.com-Seite</em:description>
                 <em:translator>Viacheslav Wolf</em:translator>
                 <em:homepageURL>https://vk.com/playercontrolpanel</em:homepageURL>

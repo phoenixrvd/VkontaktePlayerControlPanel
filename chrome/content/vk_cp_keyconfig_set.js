@@ -91,10 +91,7 @@ var vk_cp_keyconfig_options = {
   isSeparator: function(row){ return false; },
   isSorted: function(){ return false; },
   getLevel: function(row){ return 0; },
-  getImageSrc: function(row,col){ return null; },
-  getRowProperties: function(row,props){},
-  getCellProperties: function(row,col,props){},
-  getColumnProperties: function(colid,col,props){}
+  getImageSrc: function(row,col){ return null; }
  },
 
  /** Initializes the options */
@@ -124,7 +121,7 @@ var vk_cp_keyconfig_options = {
   }
 			 
   return true;
- },
- 
+ }
+
 
 };

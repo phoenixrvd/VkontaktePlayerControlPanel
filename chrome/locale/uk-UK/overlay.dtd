@@ -1,6 +1,4 @@
 <!ENTITY vk_player_control_panel.label "VK Player Control Panel опції">
-<!ENTITY vk_player_control_panelContext.label "Your Menuitem">
-<!ENTITY vk_player_control_panelContext.accesskey "Y">
 <!ENTITY vk_player_control_panelToolbarButton.label "Your Toolbar Button">
 <!ENTITY vk_player_control_panelToolbarButton.tooltip "This is your toolbar button!">
 <!ENTITY vk_player_control_panelToolbarButton.label_prev "Попередня композиція">
@@ -17,6 +15,3 @@
 <!ENTITY vk_player_control_panelToolbarButton.tooltip_shuffle "Перемішати">
 <!ENTITY vk_player_control_panelToolbarButton.label_return "На початок композиції">
 <!ENTITY vk_player_control_panelToolbarButton.tooltip_return "На початок композиції">
-<!ENTITY vk_player_control_panelSidebar.label "Your Sidebar">
-<!ENTITY vk_player_control_panelToolbar.name  "example">
-<!ENTITY vk_player_control_panelToolbar.label "This is an example toolbar. You can hide it under View &gt; toolbars &gt; &vk_player_control_panelToolbar.name;">
