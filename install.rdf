@@ -3,7 +3,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
         <em:id>ffvcontactecontrol_restored@killbar.org</em:id>
-        <em:version>1.2.2</em:version>
+        <em:version>1.2.3</em:version>
         <em:type>2</em:type> <!-- 2 : Extension -->
         <em:name>Vkontakte Player Control Panel (Restored)</em:name>
         <em:description>Plugin to control the player on the site VK.com</em:description>
